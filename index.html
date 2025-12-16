@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Website</title>
+    <style>
+        /* ===== CSS RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #4a4a4a;
+            --accent-color: #2563eb;
+            --background: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --border-color: #e5e5e5;
+            --max-width: 1200px;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background);
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background-color: var(--background);
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* ===== IMAGES ===== */
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 2rem;
+            display: block;
+            border: 4px solid var(--border-color);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            background-color: #f3f4f6;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===== HOME/HERO ===== */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 0;
+        }
+
+        .hero-content {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            border-radius: 0.5rem;
+            object-fit: cover;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .cta-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ===== CLIENTS SECTION ===== */
+        .clients {
+            background-color: #f9fafb;
+            padding: 3rem 0;
+        }
+
+        .clients h2 {
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .client-logo {
+            width: 120px;
+            height: 60px;
+            object-fit: contain;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            filter: grayscale(100%);
+        }
+
+        .client-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        .client-logo.image-placeholder {
+            background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%);
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            opacity: 1;
+            background-color: #1d4ed8;
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-primary);
+            opacity: 1;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .values {
+            margin-top: 3rem;
+        }
+
+        .values h3 {
+            margin-bottom: 2rem;
+        }
+
+        .values-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .value-item {
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent-color);
+            background-color: #f9fafb;
+        }
+
+        .value-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .value-item p {
+            margin: 0;
+        }
+
+        /* ===== PROJECTS ===== */
+        .projects-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-card {
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card p {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            font-size: 0.85rem;
+            padding: 0.25rem 0.75rem;
+            background-color: #f3f4f6;
+            color: var(--text-secondary);
+            border-radius: 0.25rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-email {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .social-links a {
+            font-size: 1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE - TABLET ===== */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-image {
+                order: 2;
+            }
+
+            .clients-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== RESPONSIVE - DESKTOP ===== */
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            section {
+                padding: 6rem 0;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .clients-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 3rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .hidden {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">Your Name</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HOME/HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Building digital experiences that matter</h1>
+                    <p>I'm a developer passionate about creating elegant solutions to complex problems. Currently focused on web technologies and open-source contributions.</p>
+                    <div class="cta-links">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                <!-- HERO IMAGE PLACEHOLDER -->
+                <img src="images/hero-image.jpg" alt="Your workspace or portrait" class="hero-image image-placeholder">
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTS/PARTNERS SECTION -->
+    <section class="clients">
+        <div class="container">
+            <h2 class="text-center">Trusted by leading companies</h2>
+            <div class="clients-grid">
+                <!-- CLIENT LOGO PLACEHOLDERS -->
+                <img src="images/client-1.png" alt="Client 1 logo" class="client-logo image-placeholder">
+                <img src="images/client-2.png" alt="Client 2 logo" class="client-logo image-placeholder">
+                <img src="images/client-3.png" alt="Client 3 logo" class="client-logo image-placeholder">
+                <img src="images/client-4.png" alt="Client 4 logo" class="client-logo image-placeholder">
+                <img src="images/client-5.png" alt="Client 5 logo" class="client-logo image-placeholder">
+                <img src="images/client-6.png" alt="Client 6 logo" class="client-logo image-placeholder">
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <!-- PROFILE IMAGE PLACEHOLDER -->
+                <img src="images/profile.jpg" alt="Your profile photo" class="profile-image image-placeholder">
+                
+                <p>I'm a full-stack developer with a background in computer science and a passion for building products that solve real problems. Over the past five years, I've worked with startups and established companies to deliver high-quality software solutions.</p>
+                
+                <p>My approach combines technical expertise with a deep understanding of user needs. I believe the best products are built when technology serves people, not the other way around.</p>
+                
+                <p>When I'm not coding, you'll find me reading about system design, contributing to open-source projects, or exploring new hiking trails.</p>
+
+                <div class="values">
+                    <h3>Core Values</h3>
+                    <div class="values-list">
+                        <div class="value-item">
+                            <h4>Simplicity</h4>
+                            <p>The best solutions are often the simplest ones. I strive to write clean, maintainable code that others can understand.</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Continuous Learning</h4>
+                            <p>Technology evolves rapidly. I'm committed to staying current and adapting to new tools and methodologies.</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Collaboration</h4>
+                            <p>Great products are built by teams. I value open communication and constructive feedback.</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Impact</h4>
+                            <p>I focus on work that creates meaningful value for users and contributes positively to the community.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <!-- PROJECT IMAGE PLACEHOLDER -->
+                    <img src="images/project-1.jpg" alt="Task Management Platform screenshot" class="project-image image-placeholder">
+                    <h3>Task Management Platform</h3>
+                    <p>A full-stack web application for team task management with real-time collaboration features. Built to handle teams of up to 100 users with minimal latency.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">WebSockets</span>
+                    </div>
+                    <a href="#" class="project-link">View Project →</a>
+                </article>
+
+                <article class="project-card">
+                    <!-- PROJECT IMAGE PLACEHOLDER -->
+                    <img src="images/project-2.jpg" alt="CSS Framework preview" class="project-image image-placeholder">
+                    <h3>Open Source CSS Framework</h3>
+                    <p>A lightweight, accessible CSS framework focused on responsive design and minimal bloat. Currently used by over 500 developers worldwide.</p>
+                    <div class="project-tags">
+                        <span class="tag">CSS</span>
+                        <span class="tag">Sass</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <a href="#" class="project-link">View Project →</a>
+                </article>
+
+                <article class="project-card">
+                    <!-- PROJECT IMAGE PLACEHOLDER -->
+                    <img src="images/project-3.jpg" alt="API Documentation Tool interface" class="project-image image-placeholder">
+                    <h3>API Documentation Tool</h3>
+                    <p>An automated tool that generates beautiful, interactive API documentation from code comments. Reduces documentation time by 70%.</p>
+                    <div class="project-tags">
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">Markdown</span>
+                    </div>
+                    <a href="#" class="project-link">View Project →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p>I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out.</p>
+                
+                <a href="mailto:hello@yourname.com" class="contact-email">hello@yourname.com</a>
+                
+                <ul class="social-links">
+                    <li><a href="https://github.com/yourusername">GitHub</a></li>
+                    <li><a href="https://linkedin.com/in/yourusername">LinkedIn</a></li>
+                    <li><a href="https://twitter.com/yourusername">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
